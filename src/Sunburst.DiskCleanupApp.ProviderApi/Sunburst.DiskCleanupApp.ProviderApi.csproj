@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net45</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Microsoft.DiskCleanupApi/Microsoft.DiskCleanupApi.csproj" />
+    <ProjectReference Include="../Sunburst.OutOfProcessComServer/Sunburst.OutOfProcessComServer.csproj" />
+  </ItemGroup>
+</Project>
