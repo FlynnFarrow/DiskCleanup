@@ -48,7 +48,7 @@ namespace Microsoft.DiskCleanupApi
     [ComImport, Guid("02b7e3ba-4db3-11d2-b2d9-00c04f8eec8c")]
     public interface IEmptyVolumeCache2 : IEmptyVolumeCache
     {
-        void Initialize(IntPtr hRegKey, [MarshalAs(UnmanagedType.LPWStr)] string volume, [MarshalAs(UnmanagedType.LPWStr)] string keyName,
+        void InitializeEx(IntPtr hRegKey, [MarshalAs(UnmanagedType.LPWStr)] string volume, [MarshalAs(UnmanagedType.LPWStr)] string keyName,
             [Out, MarshalAs(UnmanagedType.LPWStr)] out string displayName, [Out, MarshalAs(UnmanagedType.LPWStr)] out string description,
             [Out, MarshalAs(UnmanagedType.LPWStr)] out string buttonText, ref EmptyVolumeCacheFlags flags);
     }
