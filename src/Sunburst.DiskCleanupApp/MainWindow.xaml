@@ -6,13 +6,15 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -25,11 +27,14 @@
             </MenuItem>
         </Menu>
 
-        <Button Grid.Row="2" Grid.Column="1" Margin="0 16 16 0">Hello, World!</Button>
-        <ComboBox Grid.Row="2" Grid.Column="2" SelectedIndex="0" Margin="0 16 0 0">
+        <Button Grid.Row="2" Grid.Column="1" Margin="0 16 8 0" HorizontalAlignment="Right">Hello, World!</Button>
+        <ComboBox Grid.Row="2" Grid.Column="2" SelectedIndex="0" Margin="8 16 0 0" HorizontalAlignment="Left">
             <ComboBoxItem>Item #1</ComboBoxItem>
             <ComboBoxItem>Item #2</ComboBoxItem>
             <ComboBoxItem>Item #3</ComboBoxItem>
         </ComboBox>
+
+        <ProgressBar Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="0 16 0 0" Height="16" Minimum="0" Maximum="10" Value="4" />
+        <ProgressBar Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="0 4 0 0" Height="16" IsIndeterminate="True" />
     </Grid>
 </Window>
