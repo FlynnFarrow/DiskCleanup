@@ -2,6 +2,8 @@
     <Style x:Key="MenuBar" TargetType="{x:Type Menu}">
         <Setter Property="Padding" Value="4" />
         <Setter Property="Margin" Value="0 0 0 4" />
+        <Setter Property="BorderBrush" Value="#FFACACAC" />
+        <Setter Property="BorderThickness" Value="0 0 0 1" />
     </Style>
 
     <Style x:Key="MenuBarItem" TargetType="{x:Type MenuItem}">
