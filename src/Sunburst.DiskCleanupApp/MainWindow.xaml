@@ -5,6 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Style="{StaticResource MenuBar}">
+            <MenuItem Header="_File" Style="{StaticResource MenuBarItem}">
+                <MenuItem Header="E_xit" />
+            </MenuItem>
+        </Menu>
+
+        <Button Grid.Row="2" Grid.Column="1" Margin="0 16 16 0">Hello, World!</Button>
+        <ComboBox Grid.Row="2" Grid.Column="2" SelectedIndex="0" Margin="0 16 0 0">
+            <ComboBoxItem>Item #1</ComboBoxItem>
+            <ComboBoxItem>Item #2</ComboBoxItem>
+            <ComboBoxItem>Item #3</ComboBoxItem>
+        </ComboBox>
     </Grid>
 </Window>
