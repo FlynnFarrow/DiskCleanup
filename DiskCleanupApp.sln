@@ -14,6 +14,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sunburst.OutOfProcessComSer
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sunburst.DiskCleanupApp.ProviderApi", "src\Sunburst.DiskCleanupApp.ProviderApi\Sunburst.DiskCleanupApp.ProviderApi.csproj", "{E2D132EF-815B-4EDC-A6C6-DB203DC207E5}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sunburst.DiskCleanupApp", "src\Sunburst.DiskCleanupApp\Sunburst.DiskCleanupApp.csproj", "{1F8B418D-2C51-4A8B-B9FD-FBE943CDD368}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{E2D132EF-815B-4EDC-A6C6-DB203DC207E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2D132EF-815B-4EDC-A6C6-DB203DC207E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2D132EF-815B-4EDC-A6C6-DB203DC207E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F8B418D-2C51-4A8B-B9FD-FBE943CDD368}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F8B418D-2C51-4A8B-B9FD-FBE943CDD368}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F8B418D-2C51-4A8B-B9FD-FBE943CDD368}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F8B418D-2C51-4A8B-B9FD-FBE943CDD368}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
