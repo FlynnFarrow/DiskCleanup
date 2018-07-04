@@ -83,8 +83,9 @@ namespace Sunburst.DiskCleanupApp
             Callback = callback;
         }
 
-        public void ReportProgress(ulong spaceUsed, string status) => Callback.ScanProgress(spaceUsed, 0, status);
-        public void ReportComplete(ulong spaceUsed, string status) => Callback.ScanProgress(spaceUsed, EmptyVolumeCacheCallbackFlags.EVCCF_LASTNOTIFICATION, status);
+        public void ReportProgress(ulong spaceUsed, string status) => Callback.ScanProgress(spaceUsed, 0, Marshal.StringToCoTaskMemUni(status));
+        public void ReportComplete(ulong spaceUsed, string status) => Callback.ScanProgress(spaceUsed, EmptyVolumeCacheCallbackFlags.EVCCF_LASTNOTIFICATION,
+            Marshal.StringToCoTaskMemUni(status));
     }
 
     public class FreeSpaceProgress
@@ -95,7 +96,7 @@ namespace Sunburst.DiskCleanupApp
             Callback = callback;
         }
 
-        public void ReportProgress(ulong spaceFreed, ulong spaceToFree, string status) => Callback.PurgeProgress(spaceFreed, spaceToFree, 0, status);
-        public void ReportComplete(ulong spaceFreed, ulong spaceToFree, string status) => Callback.PurgeProgress(spaceFreed, spaceToFree, EmptyVolumeCacheCallbackFlags.EVCCF_LASTNOTIFICATION, status);
+        public void ReportProgress(ulong spaceFreed, ulong spaceToFree, string status) => Callback.PurgeProgress(spaceFreed, spaceToFree, 0, Marshal.StringToCoTaskMemUni(status));
+        public void ReportComplete(ulong spaceFreed, ulong spaceToFree, string status) => Callback.PurgeProgress(spaceFreed, spaceToFree, EmptyVolumeCacheCallbackFlags.EVCCF_LASTNOTIFICATION, Marshal.StringToCoTaskMemUni(status));
     }
 }

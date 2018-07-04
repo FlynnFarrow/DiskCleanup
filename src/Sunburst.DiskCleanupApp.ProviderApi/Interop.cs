@@ -27,9 +27,9 @@ namespace Sunburst.DiskCleanupApp.Interop
     public interface IEmptyVolumeCacheCallback
     {
         [PreserveSig]
-        int ScanProgress(ulong spaceUsed, EmptyVolumeCacheCallbackFlags flags, [MarshalAs(UnmanagedType.LPWStr)] string status);
+        int ScanProgress(ulong spaceUsed, EmptyVolumeCacheCallbackFlags flags, IntPtr pwszStatus);
         [PreserveSig]
-        int PurgeProgress(ulong spaceFreed, ulong spaceToFree, EmptyVolumeCacheCallbackFlags flags, [MarshalAs(UnmanagedType.LPWStr)] string status);
+        int PurgeProgress(ulong spaceFreed, ulong spaceToFree, EmptyVolumeCacheCallbackFlags flags, IntPtr pwszStatus);
     }
 
     [ComImport, Guid("8FCE5227-04DA-11d1-A004-00805F8ABE06")]
