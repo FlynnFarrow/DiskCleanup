@@ -10,6 +10,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -19,9 +20,10 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Style="{StaticResource MenuBar}">
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Style="{StaticResource MenuBar}">
             <MenuItem Header="_File" Style="{StaticResource MenuBarItem}">
                 <MenuItem Header="E_xit" />
             </MenuItem>
@@ -36,5 +38,8 @@
 
         <ProgressBar Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="0 16 0 0" Height="16" Minimum="0" Maximum="10" Value="4" />
         <ProgressBar Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="0 4 0 0" Height="16" IsIndeterminate="True" />
+
+        <ScrollBar Grid.Column="5" Grid.Row="1" Grid.RowSpan="5" Minimum="0" Maximum="10" Value="3" SmallChange="0.1" LargeChange="1" />
+        <ScrollBar Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="4" Minimum="0" Maximum="10" Value="3" SmallChange="0.1" LargeChange="1" Orientation="Horizontal" />
     </Grid>
 </Window>
