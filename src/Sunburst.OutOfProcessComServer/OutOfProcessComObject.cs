@@ -10,6 +10,7 @@ namespace Sunburst.OutOfProcessComServer
     {
         private static int ServerRefCount = 0;
         private static bool ServerRunning = false;
+        private readonly bool DecrementRefCountOnFree;
 
         public static void RunComServer(IEnumerable<Type> comObjectTypes)
         {
@@ -42,12 +43,24 @@ namespace Sunburst.OutOfProcessComServer
 
         protected OutOfProcessComObject(OutOfProcessComObjectFlags flags)
         {
-            Interlocked.Increment(ref ServerRefCount);
+            if (ServerRunning)
+            {
+                Interlocked.Increment(ref ServerRefCount);
+                DecrementRefCountOnFree = true;
+            }
+            else
+            {
+                DecrementRefCountOnFree = false;
+            }
         }
 
-        ~OutOfProcessComObject() {
-            int newRefCount = Interlocked.Decrement(ref ServerRefCount);
-            if (ServerRunning && newRefCount == 0) Application.Exit();
+        ~OutOfProcessComObject()
+        {
+            if (DecrementRefCountOnFree)
+            {
+                int newRefCount = Interlocked.Decrement(ref ServerRefCount);
+                if (ServerRunning && newRefCount == 0) Application.Exit();
+            }
         }
     }
 
