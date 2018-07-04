@@ -3,7 +3,31 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Sunburst Disk Cleanup" Width="450" Height="530" ResizeMode="CanMinimize">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Margin="8" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" FontSize="14" Foreground="SteelBlue"
+                   TextWrapping="Wrap">
+            You can use Disk Cleanup to free up to {0} MB of disk space on C:.
+        </TextBlock>
+
+        <Button Content="OK" IsDefault="True" Grid.Row="6" Grid.Column="2" Margin="8 8 4 8" MinWidth="60" />
+        <Button Content="Cancel" IsCancel="True" Grid.Row="6" Grid.Column="3" Margin="4 8 8 8" MinWidth="60" />
     </Grid>
 </Window>
