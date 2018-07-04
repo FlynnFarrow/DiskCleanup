@@ -7,6 +7,5 @@
 
   <ItemGroup>
     <ProjectReference Include="../Sunburst.Presentation.Controls/Sunburst.Presentation.Controls.csproj" />
-    <Reference Include="PresentationFramework.Aero2" />
   </ItemGroup>
 </Project>
