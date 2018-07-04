@@ -18,6 +18,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sunburst.DiskCleanupApp", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sunburst.Presentation.TaskDialogs", "src\Sunburst.Presentation.TaskDialogs\Sunburst.Presentation.TaskDialogs.csproj", "{05D6CC1A-D085-4D25-B182-5F87306788E8}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sunburst.Presentation.Controls", "src\Sunburst.Presentation.Controls\Sunburst.Presentation.Controls.csproj", "{B50724ED-E5B8-4710-8250-B189EEE63A92}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{05D6CC1A-D085-4D25-B182-5F87306788E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05D6CC1A-D085-4D25-B182-5F87306788E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05D6CC1A-D085-4D25-B182-5F87306788E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B50724ED-E5B8-4710-8250-B189EEE63A92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B50724ED-E5B8-4710-8250-B189EEE63A92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B50724ED-E5B8-4710-8250-B189EEE63A92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B50724ED-E5B8-4710-8250-B189EEE63A92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

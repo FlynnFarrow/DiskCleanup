@@ -1,10 +1,12 @@
-<Project Sdk="MSBuild.Sdk.Extras">
+﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net472</TargetFramework>
     <ExtrasEnableWpfProjectSetup>true</ExtrasEnableWpfProjectSetup>
   </PropertyGroup>
+
   <ItemGroup>
+    <ProjectReference Include="../Sunburst.Presentation.Controls/Sunburst.Presentation.Controls.csproj" />
     <Reference Include="PresentationFramework.Aero2" />
   </ItemGroup>
 </Project>

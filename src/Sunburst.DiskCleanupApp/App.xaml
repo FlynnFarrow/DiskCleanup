@@ -6,7 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Sunburst.DiskCleanupApp;component/Theme/Default.xaml" />
+                <ResourceDictionary Source="/Sunburst.Presentation.Controls;component/Theme/Default.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
