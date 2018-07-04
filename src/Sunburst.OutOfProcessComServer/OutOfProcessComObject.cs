@@ -8,7 +8,8 @@ namespace Sunburst.OutOfProcessComServer
 {
     public abstract class OutOfProcessComObject
     {
-        private static int ServerRefCount;
+        private static int ServerRefCount = 0;
+        private static bool ServerRunning = false;
 
         public static void RunComServer(IEnumerable<Type> comObjectTypes)
         {
@@ -28,10 +29,12 @@ namespace Sunburst.OutOfProcessComServer
                     registrationCookies.Add(cookie);
                 }
 
+                ServerRunning = true;
                 Application.Run();
             }
             finally
             {
+                ServerRunning = false;
                 foreach (var cookie in registrationCookies)
                     services.UnregisterTypeForComClients(cookie);
             }
@@ -44,7 +47,7 @@ namespace Sunburst.OutOfProcessComServer
 
         ~OutOfProcessComObject() {
             int newRefCount = Interlocked.Decrement(ref ServerRefCount);
-            if (newRefCount == 0) Application.Exit();
+            if (ServerRunning && newRefCount == 0) Application.Exit();
         }
     }
 
