@@ -4,7 +4,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../Microsoft.DiskCleanupApi/Microsoft.DiskCleanupApi.csproj" />
     <ProjectReference Include="../Sunburst.OutOfProcessComServer/Sunburst.OutOfProcessComServer.csproj" />
   </ItemGroup>
 </Project>

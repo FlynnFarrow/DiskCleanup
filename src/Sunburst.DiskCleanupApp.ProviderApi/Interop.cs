@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Microsoft.DiskCleanupApi
+namespace Sunburst.DiskCleanupApp.Interop
 {
     [Flags]
     public enum EmptyVolumeCacheFlags
@@ -36,7 +36,7 @@ namespace Microsoft.DiskCleanupApi
     public interface IEmptyVolumeCache
     {
         void Initialize(IntPtr hRegKey, [MarshalAs(UnmanagedType.LPWStr)] string volume,
-            [Out, MarshalAs(UnmanagedType.LPWStr)] out string displayName, [Out, MarshalAs(UnmanagedType.LPWStr)] out string description,
+            out IntPtr pwszDisplayName, out IntPtr pwszDescription,
             ref EmptyVolumeCacheFlags flags);
 
         void GetSpaceUsed(out ulong spaceUsed, IEmptyVolumeCacheCallback callback);
@@ -49,7 +49,6 @@ namespace Microsoft.DiskCleanupApi
     public interface IEmptyVolumeCache2 : IEmptyVolumeCache
     {
         void InitializeEx(IntPtr hRegKey, [MarshalAs(UnmanagedType.LPWStr)] string volume, [MarshalAs(UnmanagedType.LPWStr)] string keyName,
-            [Out, MarshalAs(UnmanagedType.LPWStr)] out string displayName, [Out, MarshalAs(UnmanagedType.LPWStr)] out string description,
-            [Out, MarshalAs(UnmanagedType.LPWStr)] out string buttonText, ref EmptyVolumeCacheFlags flags);
+            out IntPtr pwszDisplayName, out IntPtr pwszDescription, out IntPtr pwszButtonText, ref EmptyVolumeCacheFlags flags);
     }
 }

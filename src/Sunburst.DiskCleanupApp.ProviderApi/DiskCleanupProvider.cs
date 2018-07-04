@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using Sunburst.DiskCleanupApp.Interop;
 using Sunburst.OutOfProcessComServer;
-using Microsoft.DiskCleanupApi;
 
 namespace Sunburst.DiskCleanupApp
 {
@@ -20,24 +20,23 @@ namespace Sunburst.DiskCleanupApp
         #region IEmptyVolumeCache
 
         public void InitializeEx(IntPtr hRegKey, [MarshalAs(UnmanagedType.LPWStr)] string volume, [MarshalAs(UnmanagedType.LPWStr)] string keyName,
-            [MarshalAs(UnmanagedType.LPWStr), Out] out string displayName, [MarshalAs(UnmanagedType.LPWStr), Out] out string description,
-            [MarshalAs(UnmanagedType.LPWStr), Out] out string buttonText, ref EmptyVolumeCacheFlags flags)
+            out IntPtr pwszDisplayName, out IntPtr pwszDescription, out IntPtr pwszButtonText, ref EmptyVolumeCacheFlags flags)
         {
             VolumeName = volume;
             DiskSpaceCritical = flags.HasFlag(EmptyVolumeCacheFlags.EVCF_OUTOFDISKSPACE);
 
             ProviderSettings settings = Initialize();
-            buttonText = settings.ButtonText;
-            description = settings.Description;
-            displayName = settings.DisplayName;
+            pwszButtonText = Marshal.StringToCoTaskMemUni(settings.ButtonText);
+            pwszDescription = Marshal.StringToCoTaskMemUni(settings.Description);
+            pwszDisplayName = Marshal.StringToCoTaskMemUni(settings.DisplayName);
 
             if (settings.DisplayButton) flags |= EmptyVolumeCacheFlags.EVCF_HASSETTINGS;
             if (settings.EnableByDefault) flags |= EmptyVolumeCacheFlags.EVCF_ENABLEBYDEFAULT | EmptyVolumeCacheFlags.EVCF_ENABLEBYDEFAULT_AUTO;
             if (settings.NoShowIfSpaceZero) flags |= EmptyVolumeCacheFlags.EVCF_DONTSHOWIFZERO;
         }
 
-        public void Initialize(IntPtr hRegKey, [MarshalAs(UnmanagedType.LPWStr)] string volume, [MarshalAs(UnmanagedType.LPWStr), Out] out string displayName,
-            [MarshalAs(UnmanagedType.LPWStr), Out] out string description, ref EmptyVolumeCacheFlags flags)
+        public void Initialize(IntPtr hRegKey, [MarshalAs(UnmanagedType.LPWStr)] string volume, out IntPtr pwszDisplayName,
+            out IntPtr pwszDescription, ref EmptyVolumeCacheFlags flags)
         {
             // Deliberately not implemented; this should never be called by Windows, as InitializeEx() is preferred.
             throw new NotImplementedException();
