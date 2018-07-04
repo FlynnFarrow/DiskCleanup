@@ -13,37 +13,9 @@ namespace Sunburst.DiskCleanupApp
         protected bool DiskSpaceCritical { get; private set; }
         
         protected abstract ProviderSettings Initialize();
-        protected abstract ulong ComputeSpaceUsed(IComputeFreeSpaceProgress progress);
-        protected abstract void FreeSpace(ulong desiredFreeSpace, IFreeSpaceProgress progress);
+        protected abstract ulong ComputeSpaceUsed(ComputeFreeSpaceProgress progress);
+        protected abstract void FreeSpace(ulong desiredFreeSpace, FreeSpaceProgress progress);
         protected virtual void ShowSettings(IntPtr hWndOwner) => throw new NotImplementedException();
-
-        #region Nested Classes
-
-        private class ComputeFreeSpaceProgress : IComputeFreeSpaceProgress
-        {
-            private readonly IEmptyVolumeCacheCallback Callback;
-            public ComputeFreeSpaceProgress(IEmptyVolumeCacheCallback callback)
-            {
-                Callback = callback;
-            }
-
-            public void ReportProgress(ulong spaceUsed, string status) => Callback.ScanProgress(spaceUsed, 0, status);
-            public void ReportComplete(ulong spaceUsed, string status) => Callback.ScanProgress(spaceUsed, EmptyVolumeCacheCallbackFlags.EVCCF_LASTNOTIFICATION, status);
-        }
-
-        private class FreeSpaceProgress : IFreeSpaceProgress
-        {
-            private readonly IEmptyVolumeCacheCallback Callback;
-            public FreeSpaceProgress(IEmptyVolumeCacheCallback callback)
-            {
-                Callback = callback;
-            }
-
-            public void ReportProgress(ulong spaceFreed, ulong spaceToFree, string status) => Callback.PurgeProgress(spaceFreed, spaceToFree, 0, status);
-            public void ReportComplete(ulong spaceFreed, ulong spaceToFree, string status) => Callback.PurgeProgress(spaceFreed, spaceToFree, EmptyVolumeCacheCallbackFlags.EVCCF_LASTNOTIFICATION, status);
-        }
-
-        #endregion
 
         #region IEmptyVolumeCache
 
@@ -104,15 +76,27 @@ namespace Sunburst.DiskCleanupApp
         public bool NoShowIfSpaceZero { get; set; } = false;
     }
 
-    public interface IComputeFreeSpaceProgress
+    public class ComputeFreeSpaceProgress
     {
-        void ReportProgress(ulong spaceUsed, string status);
-        void ReportComplete(ulong spaceUsed, string status);
+        private readonly IEmptyVolumeCacheCallback Callback;
+        internal ComputeFreeSpaceProgress(IEmptyVolumeCacheCallback callback)
+        {
+            Callback = callback;
+        }
+
+        public void ReportProgress(ulong spaceUsed, string status) => Callback.ScanProgress(spaceUsed, 0, status);
+        public void ReportComplete(ulong spaceUsed, string status) => Callback.ScanProgress(spaceUsed, EmptyVolumeCacheCallbackFlags.EVCCF_LASTNOTIFICATION, status);
     }
 
-    public interface IFreeSpaceProgress
+    public class FreeSpaceProgress
     {
-        void ReportProgress(ulong spaceFreed, ulong spaceToFree, string status);
-        void ReportComplete(ulong spaceFreed, ulong spaceToFree, string status);
+        private readonly IEmptyVolumeCacheCallback Callback;
+        internal FreeSpaceProgress(IEmptyVolumeCacheCallback callback)
+        {
+            Callback = callback;
+        }
+
+        public void ReportProgress(ulong spaceFreed, ulong spaceToFree, string status) => Callback.PurgeProgress(spaceFreed, spaceToFree, 0, status);
+        public void ReportComplete(ulong spaceFreed, ulong spaceToFree, string status) => Callback.PurgeProgress(spaceFreed, spaceToFree, EmptyVolumeCacheCallbackFlags.EVCCF_LASTNOTIFICATION, status);
     }
 }
