@@ -22,7 +22,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <TextBlock Margin="8" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" FontSize="14" Foreground="SteelBlue"
+        <TextBlock Margin="14 20 14 14" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" FontSize="14" Foreground="SteelBlue"
                    TextWrapping="Wrap">
             You can use Disk Cleanup to free up to {0} MB of disk space on C:.
         </TextBlock>
