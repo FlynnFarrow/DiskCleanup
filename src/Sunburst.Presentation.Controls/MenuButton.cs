@@ -11,7 +11,6 @@ namespace Sunburst.Presentation.Controls
 {
     [TemplateVisualState(Name = "Enabled", GroupName = "EnabledStates")]
     [TemplateVisualState(Name = "Disabled", GroupName = "EnabledStates")]
-    [TemplateVisualState(Name = "MenuEmpty", GroupName = "EnabledStates")]
     [TemplateVisualState(Name = "Normal", GroupName = "FocusStates")]
     [TemplateVisualState(Name = "Focused", GroupName = "FocusStates")]
     [TemplateVisualState(Name = "MouseOver", GroupName = "FocusStates")]
@@ -19,6 +18,11 @@ namespace Sunburst.Presentation.Controls
     [ContentProperty("Menu")]
     public class MenuButton : ContentControl
     {
+        static MenuButton()
+        {
+            IsEnabledProperty.OverrideMetadata(typeof(MenuButton), new UIPropertyMetadata(OnEnabledChanged));
+        }
+
         public static readonly DependencyProperty MenuProperty =
             DependencyProperty.Register(nameof(Menu), typeof(ContextMenu), typeof(MenuButton), new PropertyMetadata(null, OnMenuChanged));
 
@@ -33,8 +37,7 @@ namespace Sunburst.Presentation.Controls
             MenuButton button = (MenuButton)sender;
             button.UpdateStates(true);
 
-            if (e.OldValue != null)
-                ((ContextMenu)e.OldValue).Closed -= button.OnMenuClosed;
+            if (e.OldValue != null) ((ContextMenu)e.OldValue).Closed -= button.OnMenuClosed;
 
             if (e.NewValue != null)
             {
@@ -43,6 +46,12 @@ namespace Sunburst.Presentation.Controls
                 menu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
                 menu.Closed += button.OnMenuClosed;
             }
+        }
+
+        private static void OnEnabledChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            MenuButton button = (MenuButton)sender;
+            button.UpdateStates(true);
         }
 
         private void OnMenuClosed(object sender, RoutedEventArgs e)
@@ -59,13 +68,12 @@ namespace Sunburst.Presentation.Controls
         private void UpdateStates(bool useTransitions)
         {
             if (IsEnabled) VisualStateManager.GoToState(this, "Enabled", useTransitions);
+            else VisualStateManager.GoToState(this, "Disabled", useTransitions);
 
-            if (Menu.IsOpen) VisualStateManager.GoToState(this, "Pressed", useTransitions);
+            if (Menu != null && Menu.IsOpen) VisualStateManager.GoToState(this, "Pressed", useTransitions);
             else if (IsMouseOver) VisualStateManager.GoToState(this, "MouseOver", useTransitions);
             else if (IsFocused) VisualStateManager.GoToState(this, "Focused", useTransitions);
-            else VisualStateManager.GoToElementState(this, "Normal", useTransitions);
-
-            if (!IsEnabled) VisualStateManager.GoToElementState(this, "Disabled", useTransitions);
+            else VisualStateManager.GoToState(this, "Normal", useTransitions);
         }
 
         protected override void OnGotFocus(RoutedEventArgs e)
