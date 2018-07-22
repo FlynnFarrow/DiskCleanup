@@ -4,7 +4,8 @@
         xmlns:Controls="clr-namespace:Sunburst.Presentation.Controls;assembly=Sunburst.Presentation.Controls"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
-        Title="Sunburst Disk Cleanup" Width="450" Height="530" ResizeMode="CanMinimize">
+        Title="Sunburst Disk Cleanup" Width="450" Height="530" ResizeMode="CanMinimize"
+        TextOptions.TextFormattingMode="Display">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
