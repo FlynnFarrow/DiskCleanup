@@ -24,7 +24,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Margin="20" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" FontSize="16" Foreground="Blue" TextWrapping="Wrap">
-            You can use Disk Cleanup to free up to {0} MB of disk space on C:.
+            You can use Disk Cleanup to free up to {0} MB of disk space on {1}.
         </TextBlock>
 
         <Controls:MenuButton Content="More..." Grid.Row="6" Grid.Column="0" Margin="8">
