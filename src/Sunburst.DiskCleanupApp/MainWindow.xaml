@@ -2,9 +2,12 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Controls="clr-namespace:Sunburst.Presentation.Controls;assembly=Sunburst.Presentation.Controls"
+        xmlns:lex="http://wpflocalizeextension.codeplex.com"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
-        Title="Sunburst Disk Cleanup" Width="450" Height="530" ResizeMode="CanMinimize"
+        lex:ResxLocalizationProvider.DefaultAssembly="Sunburst.DiskCleanupApp" lex:ResxLocalizationProvider.DefaultDictionary="Resources.Strings"
+        lex:LocalizeDictionary.DesignCulture="en"
+        Title="{lex:Loc Key=MainWindow_Title}" Width="450" Height="530" ResizeMode="CanMinimize"
         TextOptions.TextFormattingMode="Display">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -27,12 +30,12 @@
             You can use Disk Cleanup to free up to {0} MB of disk space on {1}.
         </TextBlock>
 
-        <Controls:MenuButton Content="_More..." Grid.Row="6" Grid.Column="0" Margin="8">
+        <Controls:MenuButton Content="{lex:Loc Key=MainWindow_MoreMenu_Text}" Grid.Row="6" Grid.Column="0" Margin="8">
             <ContextMenu>
-                <MenuItem Header="_Help" />
+                <MenuItem Header="{lex:Loc Key=MainWindow_HelpCommand_Text}" />
             </ContextMenu>
         </Controls:MenuButton>
 
-        <Button Content="_Begin Cleanup" IsDefault="True" Grid.Row="6" Grid.Column="2" Margin="8" MinWidth="60" Padding="10 4 10 4" />
+        <Button Content="{lex:Loc Key=MainWindow_BeginCleanupButton_Text}" IsDefault="True" Grid.Row="6" Grid.Column="2" Margin="8" MinWidth="60" Padding="10 4 10 4" />
     </Grid>
 </Window>
