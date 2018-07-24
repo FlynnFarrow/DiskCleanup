@@ -9,6 +9,7 @@ using System.Windows.Markup;
 
 namespace Sunburst.Presentation.Controls
 {
+    [TemplatePart(Name = "PART_ContentPresenter", Type = typeof(ContentPresenter))]
     [TemplateVisualState(Name = "Enabled", GroupName = "EnabledStates")]
     [TemplateVisualState(Name = "Disabled", GroupName = "EnabledStates")]
     [TemplateVisualState(Name = "Normal", GroupName = "FocusStates")]
@@ -63,6 +64,9 @@ namespace Sunburst.Presentation.Controls
         {
             base.OnApplyTemplate();
             UpdateStates(false);
+
+            ContentPresenter presenter = (ContentPresenter)GetTemplateChild("PART_ContentPresenter");
+            AccessKeyManager.AddAccessKeyPressedHandler(presenter, AccessKeyPressed);
         }
 
         private void UpdateStates(bool useTransitions)
@@ -118,6 +122,15 @@ namespace Sunburst.Presentation.Controls
                 {
                     ToggleMenu();
                 }
+            }
+        }
+
+        private void AccessKeyPressed(object sender, AccessKeyPressedEventArgs e)
+        {
+            if (IsEnabled)
+            {
+                Focus();
+                ToggleMenu();
             }
         }
 
