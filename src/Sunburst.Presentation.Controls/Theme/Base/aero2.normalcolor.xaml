@@ -3025,6 +3025,7 @@ Theme Styles For Windows Presentation Foundation Version
         <Setter Property="BorderBrush" Value="{StaticResource Menu.Static.Separator}"/>
         <Setter Property="MinHeight" Value="1"/>
         <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="Margin" Value="0 2 0 2"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Separator}">
@@ -3154,7 +3155,7 @@ Theme Styles For Windows Presentation Foundation Version
                                 </Canvas>
                                 <Rectangle HorizontalAlignment="Left"
                                            Width="1"
-                                           Margin="29,2,0,2"
+                                           Margin="29,1,0,1"
                                            Fill="{StaticResource Menu.Static.Separator}"/>
                                 <ItemsPresenter x:Name="ItemsPresenter"
                                     KeyboardNavigation.DirectionalNavigation="Cycle"
@@ -3247,8 +3248,7 @@ Theme Styles For Windows Presentation Foundation Version
                     Grid.Column="4"
                     Text="{TemplateBinding InputGestureText}"
                     Margin="{TemplateBinding MenuItem.Padding}"
-                    VerticalAlignment="Center"
-                    Opacity="0.7" />
+                    VerticalAlignment="Center" />
             </Grid>
         </Border>
         <ControlTemplate.Triggers>
@@ -3364,7 +3364,7 @@ Theme Styles For Windows Presentation Foundation Version
                                 </Canvas>
                                 <Rectangle HorizontalAlignment="Left"
                                            Width="1"
-                                           Margin="29,2,0,2"
+                                           Margin="29,1,0,1"
                                            Fill="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}"/>
                                 <ItemsPresenter x:Name="ItemsPresenter"
                                     KeyboardNavigation.DirectionalNavigation="Cycle"
@@ -3389,7 +3389,7 @@ Theme Styles For Windows Presentation Foundation Version
                 <Setter TargetName="Icon" Property="Visibility" Value="Collapsed"/>
             </Trigger>
             <Trigger Property="IsHighlighted" Value="True">
-                <Setter TargetName="templateRoot" Property="Background" Value="Transparent" />
+                <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource MenuItem.Highlight.Background}" />
                 <Setter TargetName="templateRoot" Property="BorderBrush" Value="{StaticResource MenuItem.Highlight.Border}" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
